@@ -16,7 +16,7 @@ struct ContentView: View {
         VStack {
             VStack {
                 Text("\(DateComponentsFormatter().string(from:TimeInterval(timerModel.timeRemaining))!)")
-                    .font(.largeTitle)
+                    .font(Font.largeTitle.monospacedDigit())
                     .foregroundColor(.white)
                     .padding(.horizontal, 20)
                     .padding(.vertical, 5)
