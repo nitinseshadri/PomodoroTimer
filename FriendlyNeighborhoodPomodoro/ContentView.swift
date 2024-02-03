@@ -25,6 +25,8 @@ struct ContentView: View {
                             .fill(timerModel.timeRemaining > 0 ? Color.black : Color.red)
                             .opacity(0.75)
                     )
+                    .animation(.default, value: timerModel.timeRemaining)
+                    .contentTransition(.numericText(value: timerModel.timeRemaining))
                 HStack {
                     Button(timerModel.timerState == .running ? "Pause" : "Start") {
                         switch (timerModel.timerState) {
@@ -52,7 +54,7 @@ struct ContentView: View {
                     Text("Long Break").tag(PomodoroTimerModel.PomodoroTimerMode.longBreak)
                 }
                 .pickerStyle(RadioGroupPickerStyle())
-                .onChange(of: self.timerMode) { newValue in
+                .onChange(of: self.timerMode) { oldValue, newValue in
                     timerModel.resetTimer(mode: newValue)
                 }
             }
